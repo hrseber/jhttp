@@ -36,25 +36,20 @@ pipeline:
                       echo "Welcome to Harness CI"
                       mvn -B package --file pom.xml
               - step:
-                  type: Run
-                  name: Run_TestRudy
-                  identifier: Run_TestRudy
+                  type: RunTests
+                  name: RunTests_1
+                  identifier: RunTests_1
                   spec:
-                    shell: Sh
-                    command: |-
-                      - step:
-                                        type: Run
-                                        name: Pytest
-                                        identifier: Pytest
-                                        spec:
-                                          shell: Sh
-                                          command: |-
-                                            pytest test_main.py --junit-xml=output-test.xml
-                                          reports:
-                                            type: JUnit
-                                            spec:
-                                              paths:
-                                                - output-test.xml
+                    language: Java
+                    buildTool: Bazel
+                    args: test
+                    runOnlySelectedTests: true
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "**/*.xml"
+                    enableTestSplitting: false
           platform:
             os: Linux
             arch: Amd64
