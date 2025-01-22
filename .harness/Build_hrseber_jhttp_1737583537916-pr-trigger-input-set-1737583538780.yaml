@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_hrseber_jhttp_1737583537916-pr-trigger-input-set
+  identifier: Build_hrseber_jhttp_1737583537916prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: Candidate
+  pipeline:
+    identifier: Build_hrseber_jhttp_1737583537916
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
