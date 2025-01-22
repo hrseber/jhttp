@@ -35,21 +35,6 @@ pipeline:
                     command: |-
                       echo "Welcome to Harness CI"
                       mvn -B package --file pom.xml
-              - step:
-                  type: RunTests
-                  name: RunTests_1
-                  identifier: RunTests_1
-                  spec:
-                    language: Java
-                    buildTool: Bazel
-                    args: test
-                    runOnlySelectedTests: true
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - "**/*.xml"
-                    enableTestSplitting: false
           platform:
             os: Linux
             arch: Amd64
