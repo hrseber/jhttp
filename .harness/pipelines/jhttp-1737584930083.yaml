@@ -50,7 +50,7 @@ pipeline:
                                           connectorRef: account.harnessImage
                                           image: python:latest
                                           shell: Sh
-                                          command: |
+                                          command: |-
                                             echo "Welcome to Harness CI"
                                             uname -a
                                             pip install pytest
@@ -64,7 +64,7 @@ pipeline:
                                             type: JUnit
                                             spec:
                                               paths:
-                                                - "output-test.xml"
+                                                - "**/*.xml"
           platform:
             os: Linux
             arch: Amd64
