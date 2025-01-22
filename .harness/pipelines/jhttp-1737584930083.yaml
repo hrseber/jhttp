@@ -49,8 +49,7 @@ pipeline:
                                         spec:
                                           shell: Sh
                                           command: |-
-                                            set -e
-                                            pytest test_main.py --junit-xml=output-test.xml
+                                            set -e pytest test_main.py --junit-xml=output-test.xml
                                           reports:
                                             type: JUnit
                                             spec:
