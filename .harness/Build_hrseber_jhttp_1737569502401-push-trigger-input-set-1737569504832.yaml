@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_hrseber_jhttp_1737569502401-push-trigger-input-set
+  identifier: Build_hrseber_jhttp_1737569502401pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: Candidate
+  pipeline:
+    identifier: Build_hrseber_jhttp_1737569502401
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
