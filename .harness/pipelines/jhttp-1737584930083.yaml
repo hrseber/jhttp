@@ -37,34 +37,24 @@ pipeline:
                       mvn -B package --file pom.xml
               - step:
                   type: Run
-                  name: Run_Tests
-                  identifier: Run_Tests
+                  name: Run_TestRudy
+                  identifier: Run_TestRudy
                   spec:
                     shell: Sh
                     command: |-
                       - step:
                                         type: Run
-                                        name: Run pytest
-                                        identifier: Run_pytest
+                                        name: Pytest
+                                        identifier: Pytest
                                         spec:
-                                          connectorRef: account.harnessImage
-                                          image: python:latest
                                           shell: Sh
                                           command: |-
-                                            echo "Welcome to Harness CI"
-                                            uname -a
-                                            pip install pytest
-                                            pip install pytest-cov
-                                            pip install -r requirements.txt
-
-                                            pytest -v --cov --junitxml="result.xml" test_api.py test_api_2.py test_api_3.py
-
-                                            echo "Done"
+                                            pytest test_main.py --junit-xml=output-test.xml
                                           reports:
                                             type: JUnit
                                             spec:
                                               paths:
-                                                - "**/*.xml"
+                                                - output-test.xml
           platform:
             os: Linux
             arch: Amd64
