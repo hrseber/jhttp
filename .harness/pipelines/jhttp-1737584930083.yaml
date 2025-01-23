@@ -40,7 +40,7 @@ pipeline:
                   name: Run_Test
                   identifier: Run_Test
                   spec:
-                    shell: Python
+                    shell: Sh
                     command: |-
                       - step:
                                         type: Run
