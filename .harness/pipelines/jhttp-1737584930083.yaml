@@ -36,17 +36,20 @@ pipeline:
                       echo "Welcome to Harness CI"
                       mvn -B package --file pom.xml
               - step:
-                  type: Run
-                  name: Pytest
-                  identifier: Pytest
+                  type: RunTests
+                  name: Java Test
+                  identifier: Java_Test
                   spec:
-                    shell: Sh
-                    command: pytest test_main.py --junit-xml=output-test.xml
+                    language: Java
+                    buildTool: Bazel
+                    args: test
+                    runOnlySelectedTests: true
                     reports:
                       type: JUnit
                       spec:
                         paths:
-                          - output-test.xml
+                          - "**/*.xml"
+                    enableTestSplitting: false
               - step:
                   type: BuildAndPushDockerRegistry
                   name: BuildAndPushDockerRegistry_1
