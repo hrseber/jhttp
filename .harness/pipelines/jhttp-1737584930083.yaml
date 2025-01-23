@@ -36,6 +36,26 @@ pipeline:
                       echo "Welcome to Harness CI"
                       mvn -B package --file pom.xml
               - step:
+                  type: Run
+                  name: Run_Test
+                  identifier: Run_Test
+                  spec:
+                    shell: Python
+                    command: |-
+                      - step:
+                                        type: Run
+                                        name: Pytest
+                                        identifier: Pytest
+                                        spec:
+                                          shell: Sh
+                                          command: |-
+                                            pytest test_main.py --junit-xml=output-test.xml
+                                          reports:
+                                            type: JUnit
+                                            spec:
+                                              paths:
+                                                - output-test.xml
+              - step:
                   type: BuildAndPushDockerRegistry
                   name: BuildAndPushDockerRegistry_1
                   identifier: BuildAndPushDockerRegistry_1
