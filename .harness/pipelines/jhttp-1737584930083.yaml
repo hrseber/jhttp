@@ -88,7 +88,7 @@ pipeline:
             steps:
               - step:
                   type: K8sCanaryDeploy
-                  name: K8sCanaryDeploy_1
+                  name: "Canary Deployment "
                   identifier: K8sCanaryDeploy_1
                   spec:
                     skipDryRun: false
@@ -96,6 +96,20 @@ pipeline:
                       type: Count
                       spec:
                         count: 1
+                  timeout: 10m
+              - step:
+                  type: K8sCanaryDelete
+                  name: Canary Delete
+                  identifier: Canary_Delete
+                  spec: {}
+                  timeout: 10m
+              - step:
+                  type: K8sRollingDeploy
+                  name: Rolling Deployment
+                  identifier: Rolling_Deployment
+                  spec:
+                    skipDryRun: false
+                    pruningEnabled: false
                   timeout: 10m
             rollbackSteps: []
           service:
@@ -112,3 +126,5 @@ pipeline:
                 - AllErrors
               action:
                 type: StageRollback
+  flowControl:
+    barriers: []
