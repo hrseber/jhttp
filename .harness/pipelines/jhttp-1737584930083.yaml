@@ -37,24 +37,16 @@ pipeline:
                       mvn -B package --file pom.xml
               - step:
                   type: Run
-                  name: Run_Test
-                  identifier: Run_Test
+                  name: Pytest
+                  identifier: Pytest
                   spec:
                     shell: Sh
-                    command: |-
-                      - step:
-                                        type: Run
-                                        name: Pytest
-                                        identifier: Pytest
-                                        spec:
-                                          shell: Sh
-                                          command: |-
-                                            pytest test_main.py --junit-xml=output-test.xml
-                                          reports:
-                                            type: JUnit
-                                            spec:
-                                              paths:
-                                                - output-test.xml
+                    command: pytest test_main.py --junit-xml=output-test.xml
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - output-test.xml
               - step:
                   type: BuildAndPushDockerRegistry
                   name: BuildAndPushDockerRegistry_1
