@@ -41,7 +41,7 @@ pipeline:
                   identifier: BuildAndPushDockerRegistry_1
                   spec:
                     connectorRef: account.harnessImage
-                    repo: hrseber/harness
+                    repo: hrseber/private
                     tags:
                       - rudy
                     caching: true
