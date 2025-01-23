@@ -41,7 +41,7 @@ pipeline:
                   identifier: Java_Test
                   spec:
                     language: Java
-                    buildTool: Bazel
+                    buildTool: Maven
                     args: test
                     runOnlySelectedTests: true
                     reports:
