@@ -43,7 +43,7 @@ pipeline:
                     connectorRef: account.harnessImage
                     repo: hrseber/harness
                     tags:
-                      - Rudy
+                      - rudy
                     caching: true
           platform:
             os: Linux
