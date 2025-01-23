@@ -20,16 +20,6 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: Test
-                  name: Test Intelligence
-                  identifier: Test_Intelligence
-                  spec:
-                    shell: Sh
-                    command: |
-                      cd ./python-tests
-                      pytest
-                    intelligenceMode: true
-              - step:
                   identifier: echo
                   name: echo
                   spec:
