@@ -56,7 +56,6 @@ pipeline:
                   template:
                     templateRef: Rudy_Java_Test
                     versionLabel: "1"
-                    reports: null
                     type: JUnit
                     spec:
                       paths:
