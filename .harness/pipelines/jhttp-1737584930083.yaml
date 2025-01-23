@@ -42,11 +42,15 @@ pipeline:
                     templateRef: Rudy_Java_Test
                     versionLabel: "1"
               - step:
-                  name: BuildAndPushDockerRegistry_1
-                  identifier: BuildAndPushDockerRegistry_1
-                  template:
-                    templateRef: Rudy_Docker_Push
-                    versionLabel: "1"
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_2
+                  identifier: BuildAndPushDockerRegistry_2
+                  spec:
+                    connectorRef: account.harnessImage
+                    repo: hrseber/harness
+                    tags:
+                      - fabio
+                    caching: true
           platform:
             os: Linux
             arch: Amd64
