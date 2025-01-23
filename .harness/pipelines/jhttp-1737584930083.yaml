@@ -36,30 +36,17 @@ pipeline:
                       echo "Welcome to Harness CI"
                       mvn -B package --file pom.xml
               - step:
-                  type: RunTests
                   name: Java Test
                   identifier: Java_Test
-                  spec:
-                    language: Java
-                    buildTool: Maven
-                    args: test
-                    runOnlySelectedTests: true
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - "**/*.xml"
-                    enableTestSplitting: false
+                  template:
+                    templateRef: Rudy_Java_Test
+                    versionLabel: "1"
               - step:
-                  type: BuildAndPushDockerRegistry
                   name: BuildAndPushDockerRegistry_1
                   identifier: BuildAndPushDockerRegistry_1
-                  spec:
-                    connectorRef: account.harnessImage
-                    repo: hrseber/private
-                    tags:
-                      - rudy
-                    caching: true
+                  template:
+                    templateRef: Rudy_Docker_Push
+                    versionLabel: "1"
           platform:
             os: Linux
             arch: Amd64
