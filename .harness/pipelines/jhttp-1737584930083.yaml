@@ -56,6 +56,11 @@ pipeline:
                   template:
                     templateRef: Rudy_Java_Test
                     versionLabel: "1"
+                    reports: null
+                    type: JUnit
+                    spec:
+                      paths:
+                        - /path/to/test/report.xml
               - step:
                   type: BuildAndPushDockerRegistry
                   name: BuildAndPushDockerRegistry_2
